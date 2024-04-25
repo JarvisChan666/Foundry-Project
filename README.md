@@ -1,26 +1,40 @@
 ## Get Started
 
-create new foundry
+**1. Create new foundry project**
+```
 forge --init 
+```
 
-Interact the contract that has been deployen
-cast + send, call
-
-Deploy a local blockchain
-anvil
-
-compile
+**2. Compile contract**
+```
 forge + fmt
+```
 
 
-whenever we send a transaction in metamask, we actually make a http post request to the RPC URL, which can get from Alchemy, and use it to actually send transactions from our Foundry projects
-
-
-
-How to deploy:
+**3. Deploy a contract**
+Deploy contract directly:
 ```
 forge create src/SimpleStorage.sol:SimpleStorage --interactive
 ```
+Deploy by using another s.sol script contract
 
-we use --interactive or keystore file with a password once foundry adds that
+**"\$RPC_URL"** and **"$PRIVATE_KEY"** are written in ".env" file
+```
+forge script script/DeploySimpleStorage.s.sol --broadcast --rpc-url $RPC_URL --private-key $PRIVATE_KEY
+```
+
+**4. Interact the contract that has been deployed**
+```
+cast send
+cast call
+```
+
+**5. Deploy a local blockchain using anvil**
+```
+anvil
+```
+
+
+
+Whenever we send a transaction in metamask, we actually make a http post request to the RPC URL, which can get from Alchemy, and use it to actually send transactions from our Foundry projects
 
